@@ -6,10 +6,13 @@ Term 5: Optimization methods lab works.
 
 ### Lab 1: 0th order methods 
 > No gradient needed. Basically, just sophisticated search algorithms
-* Scalar optimization (dumb section, fibonacci section, gold section)
-* Hooke-Jeeves
-* Nelder-Mead
-* Evolution method(s)
+* [ ] Scalar optimization 
+  - [x] dumb section
+  - [ ] fibonacci section
+  - [ ] gold section
+* [ ] Hooke-Jeeves
+* [ ] Nelder-Mead
+* [ ] Evolution method(s)
 
 ### Lab 2: 1st and 2nd order methods
 > A gradient and a hessian matrix needed
