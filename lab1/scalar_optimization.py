@@ -13,7 +13,7 @@ class Dumb:
 
         return (f(x*), x*)
         """
-        lims = G.min(), G.max()
+        lims = G.min(axis=0), G.max(axis=0)
         if self.eps is None:
             X = np.linspace(*lims, self.N)
         else:
