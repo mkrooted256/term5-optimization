@@ -1,3 +1,5 @@
+import numpy as np
+
 EXPAND_MINIMIZE, EXPAND_CLASSIC = 0, 1
 
 class NM:    
@@ -19,7 +21,7 @@ class NM:
         self.α, self.β, self.γ, self.δ = α, β, γ, δ
         self.eps_x, self.eps_f = eps_x, eps_f
         self.timeout = timeout
-    
+
     def _eval_vertices(self):
         """Return sorted list of (v_i, f(v_i))"""
         return sorted(enumerate(f(self.S[:,0], self.S[:,1])), key=lambda x:x[1])
@@ -132,5 +134,10 @@ class NM:
             self._step()
         
         c = self.S.mean(axis=0)
-        return c, self.f(*c)
+        return {
+            'x': c,
+            'f': f(*c),
+            'steps': self.steps,
+            'message': 'stopped because '+self.term_condition
+        }
         
