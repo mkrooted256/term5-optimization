@@ -1,14 +1,15 @@
 import numpy as np
 
-class DumbGradientDescent:
-    def __init__(self, x_eps=1e-10, f_eps=1e-10, timeout = 100, rate=1):
+class StepDivGradientDescent:
+    def __init__(self, x_eps=1e-10, f_eps=1e-10, timeout = 100, rate=1, div_step_by=2):
         self.x_eps = x_eps
         self.f_eps = f_eps
         self.timeout = timeout
         self.rate = float(rate)
+        self.div_step_by = div_step_by
     
     def __str__(self):
-        return f"DumbGradientDescent (x_eps={self.x_eps}, f_eps={self.f_eps}, timeout={self.timeout}, rate={self.rate})"
+        return f"StepDivGradientDescent (x_eps={self.x_eps}, f_eps={self.f_eps}, N={self.timeout}, r0={self.rate}, rdb={self.div_step_by})"
 
     def optimize(self, f, df, x_start=None, ndims=2):
         if x_start is None:
@@ -19,6 +20,8 @@ class DumbGradientDescent:
         self.f_history = []
         self.steps = 0
 
+        rate = self.rate
+
         new_x = x_start
         new_f = f(x_start)
         self.x_history.append(new_x)
@@ -27,8 +30,15 @@ class DumbGradientDescent:
             last_x = new_x
             last_f = new_f
 
-            new_x = last_x - df(last_x)*self.rate
-            new_f = f(new_x)
+            x1 = last_x - df(last_x) * rate
+            f1 = f(x1)
+
+            if f1 > last_f:
+                rate = rate / self.div_step_by
+                continue
+            
+            new_x = x1
+            new_f = f1
             
             self.x_history.append(new_x)
             self.f_history.append(new_f)
