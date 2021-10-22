@@ -2,7 +2,7 @@ import numpy as np
 
 EXPAND_MINIMIZE, EXPAND_CLASSIC = 0, 1
 
-class NM:    
+class NelderMead:    
     #static
     def init_simplex(self, N, x0=None, simplex_edge=1):
         if x0 is None:
@@ -24,7 +24,7 @@ class NM:
 
     def _eval_vertices(self):
         """Return sorted list of (v_i, f(v_i))"""
-        return sorted(enumerate(f(self.S[:,0], self.S[:,1])), key=lambda x:x[1])
+        return sorted(enumerate(self.f(self.S[:,0], self.S[:,1])), key=lambda x:x[1])
 
     def _centroid(self):
         # sum everything except the worst point
