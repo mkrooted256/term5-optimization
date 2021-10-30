@@ -10,20 +10,20 @@ Term 5: Optimization methods lab works.
   - [x] dumb section
   - [ ] fibonacci section
   - [ ] gold section
-* [ ] Hooke-Jeeves
-* [ ] Nelder-Mead
+* [x] Hooke-Jeeves
+* [x] Nelder-Mead
 * [ ] Evolution method(s)
 
 ### Lab 2: 1st and 2nd order methods
 > A gradient and a hessian matrix needed
 * Gradient descent
-  * dumb
-  * with dynamic "learning rate"
-  * the "steepest descent" algorithm
-  * the conjugate gradients method
+  * [x] dumb
+  * [x] with dynamic "learning rate"
+  * [x] the "steepest descent" algorithm
+  * [ ] the conjugate gradients method
 * Newtonian descent
-  * dumb
-  * with dynamic "learning rate"
+  * [ ] dumb
+  * [ ] with dynamic "learning rate"
 ---
 ## Constrained optimization
 
